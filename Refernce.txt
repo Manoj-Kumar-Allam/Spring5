@@ -76,7 +76,11 @@ we can access elements by the below example -:
 			<td th:text="${book.publisher.name}">VGS</td>
 </tr>
 
+What is opiniated Design -:
+It means the is one way of doing things
+Spring boot is considered as a opiniated configuration because what it's doing is bringing lot of configurations in default configurations.
 
+Un-opiniated - You can do anything you want
 
 
 
