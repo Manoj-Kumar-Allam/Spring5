@@ -1,0 +1,90 @@
+Spring Boot Starter are basically a curated set of dependencies
+JPA -ORM -> Object Relational Model mapping
+Spring JPA requires default Constructor
+When you get into some mapping you will see likage. Because the pure object model is goinf to leaking up by addition of an identity value.
+We need to give some identity values to these classes so it knows how to store and retrieve from database called as leakage.
+
+Spting is going to provide Implementation for all the Repository interfaces at Runtime.
+
+CommandLine Runner -:
+this tells Spring that when it finds instances of this type and go ahead and run them.
+
+Marking any class with @Component -> Tells the spring framework to go ahead and detect this as spring managed component and it will be in spring context.
+
+if we have any argumented constructor , it will do the dependency injection into the constructor.
+
+Incase of Spring Boot JPA, it internally uses Hibernate to save them inmemory Database - H2 Database
+
+underneath Hibernate is initilaizing the database and generating SQL DDL statements to go out create the database tables based on JLA Definitions.
+
+The Id property is mapped to the primary key in the underlying database. Thus it is used to persist and retrieve object from the database.
+
+Incase oneToMany and ManyToOne relationships, @JoinColumn(name = "publisher_id") is actually giving hint to the hibernate that the property for which this annotation has been defined will have publisher_id to refernce the publisher by making it as a foreign key relationship 
+
+cascade = cascade.ALL => Whenver we are using collection as a data type along with relation. we actually have some dependencies over one another. by using that we say while storing parent type and check all its children are stores or not
+
+ @ElementCollection is used to store collection in DB as a whole, In this case Hibernate internally creates one to one mapping with the content present inside the collection.
+ SELECT * FROM DUMMY;
+	ID  
+	4
+
+
+ SELECT * FROM DUMMY_NAMES;
+	DUMMY_ID  	NAMES  
+	4	manoj
+	
+	
+**************************************************SPRING MVC******************************************************************
+******************************************************************************************************************************
+
+MVC is a common design pattern for GUI and Web applications, it separates out concerns
+
+Model -> it is kind of data structure, it will hold the result of business operation
+Controller -> it acts like traffic cop, diverting the request and response between model and view
+View -> it process the data of model and render the view for client
+
+Thymeleaf -> A templating engine, it is going to take a model or pojo and look at our template and generate the HTML to return back to the client.
+
+Spring MVC Structure -:
+
+				(Http Request)										 (It will decide how to handle it by approaching handler, 										it also determines the controller to use which control method)	
+client Requests ---------------> Dispatcher Servlet(Front Controller) ------------------------> Handler Mapping 
+(it is going to have some type of service layer in it)
+-----------------------------------------------------> Controller --------->Service----->Data
+
+@Controller annotated class will register the class as a spring bean and as a controller in spring MVC 
+To map Methods to HTTP Request Paths use @RequestMapping
+
+The Model Object is the object which will return to the view.
+
+Thymeleaf -:
+
+Thymeleaf is a java template engine an alternative to JSP.
+Thymeleaf is a natural template engine means you can view templates in your browser.
+
+it generates Dynamic HTML
+
+By default Thymeleaf will look for templates foler under src/main/resources
+The Model is always accessible to the HTML Template. But we have to have the thymeleaf namespace in the HTML root tag ie., xmlns:th="http://www.thymeleaf.org"
+
+we can access elements by the below example -:
+
+<tr th:each="book : ${books}">
+			<td th:text="${book.id}">123</td>
+			<td th:text="${book.title}">Manoj</td>
+			<td th:text="${book.isbn}">VGS</td>
+			<td th:text="${book.publisher.name}">VGS</td>
+</tr>
+
+
+
+
+
+
+	
+	
+	
+	
+	
+	
+	
